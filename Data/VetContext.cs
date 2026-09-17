@@ -1,11 +1,12 @@
 ﻿using ClinicaApi.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace ClinicaApi.Data
 {
     public class VetContext : DbContext
     {
-        public VetContext(DbContextOptions options) : base(options)
+        public VetContext(DbContextOptions<VetContext> options) : base(options)
         {
         }
 
