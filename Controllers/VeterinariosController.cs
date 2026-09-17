@@ -3,34 +3,33 @@ using ClinicaApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace ClinicaApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TutoresController : ControllerBase
+    public class VeterinariosController : ControllerBase
     {
         private readonly VetContext _context;
 
-        public TutoresController(VetContext context)
+        public VeterinariosController(VetContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Tutor>>> GetTutors()
+        public async Task<ActionResult<IEnumerable<Veterinario>>> GetVeterinarios()
         {
-            return await _context.Tutores.ToListAsync();
+            return await _context.Veterinarios.ToListAsync();
         }
 
         [HttpPost]
 
-        public async Task<IActionResult> CriarTutor(Tutor tutor)
+        public async Task<IActionResult> CriarVeterinario(Veterinario veterinario)
         {
-            _context.Tutores.Add(tutor);
+            _context.Veterinarios.Add(veterinario);
             await _context.SaveChangesAsync();
-            return Ok("Tutor salvo com sucesso");
+            return Ok("Veterinario salvo com sucesso");
         }
     }
 }
